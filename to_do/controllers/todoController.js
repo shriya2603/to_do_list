@@ -1,11 +1,5 @@
 var bodyParser =require('body-parser');
 
-var mongoose = require('mongoose');
-
-//connect to database 
-mongoose.connect('mongoose://')
-
-
 var data =[{item:'get books'},{item:'Get positive vibes'}];
 
 var urlencodedParser = bodyParser.urlencoded({extended:false});
@@ -26,7 +20,7 @@ app.post('/todo', urlencodedParser, function(req, res){
 
 app.delete('/todo/:item',function(req,res){
 	data =data.filter(function(todo){
-		return todo.item.replace(/ /g,'-') !== req.params.item;
+		return todo.item.replace(/ /g,"-") !== req.params.item;
 	});
 	res.json(data);
 });
